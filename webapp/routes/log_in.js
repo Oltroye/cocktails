@@ -6,8 +6,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req,res, next) {
-    const { email, password } = req.body;
-    console.log(email, password)
+    const { username, password } = req.body;
+    console.log(username, password)
+    res.redirect('/home/:'+email);
 });
 
 module.exports = router;
