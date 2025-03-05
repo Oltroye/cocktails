@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req,res, next) {
     const { username, password } = req.body;
     console.log(username, password)
-    res.redirect('/home/:'+email);
+    res.redirect('/home/'+username);
 });
 
 module.exports = router;
