@@ -5,7 +5,7 @@ router.get('/:id', function(req, res, next) {
     const userId = req.params.id;
     if (userId && userId.trim() !== '') {
         // add check user exist
-        res.render('home', { title: "Cocktail's", id: userId });
+        res.render('stock', {id: userId});
     } else {
         res.redirect('/');
     }

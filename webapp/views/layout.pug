@@ -11,7 +11,9 @@ html
       ul.nav-links
         if id
           // conected users
-          la: a(href="/home/#{id}" ID="home") home
+          li: a(href="/home/"+id ID="home") home
+          li: a(href="/cocktails/"+id ID="cocktails") cocktails
+          li: a(href="/stock/"+id ID="stock") stock
         else
           // none conected users
           li: a(href="/sign_up" ID="sign_up") sign up
