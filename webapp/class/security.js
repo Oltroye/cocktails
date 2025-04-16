@@ -11,7 +11,7 @@ class Security {
     }
 
     get(key) {
-        clean();
+        this.clean();
         if(this.annuary.has(key)) {
             return this.annuary.get(key);
         }
@@ -53,7 +53,7 @@ class Security {
     }
 
     clean() {
-        for (var key of sayings) {
+        for (var key of this.annuary) {
             if (!this.isValid(key)) {
                 this.deleteKey(key);
             }

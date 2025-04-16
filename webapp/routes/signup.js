@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var security = require('../class/security');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,7 +9,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req,res, next) {
   const { username, name, lastname, password } = req.body;
-  console.log(username, name, lastname, password)
+  newkey = security.getInstance();
+  key = newkey.add(username)
+  res.redirect('/home/'+key)
 });
 
 module.exports = router;
