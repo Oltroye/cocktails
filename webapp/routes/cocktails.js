@@ -10,8 +10,8 @@ router.get('/:id', async function(req, res, next) {
         ip = ipManager.get();
         listuser = security.getInstance();
         id = listuser.get(userId)
-        // add check user exist
-        res.render('cocktails', { title: "Cocktail's", conected: true,id: id});
+        // add get coktails
+        res.render('cocktails', { title: "Cocktail's", conected: true,id: userId});
     } else {
         res.redirect('/');
     }

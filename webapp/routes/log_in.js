@@ -27,7 +27,6 @@ router.post('/', async function(req,res, next) {
     return response.json();
   })
   .then(async data => {
-    console.log(data);
     const passwordMatched = await bcrypt.compare(password, data.password);
     if (passwordMatched) {
       newkey = security.getInstance();

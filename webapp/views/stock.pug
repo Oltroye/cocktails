@@ -1,3 +1,14 @@
 extends layout
 
 block content
+    for ingridient in ingridients
+        p #{ingridient.name}
+        p #{ingridient.nameType}
+        if ingridient.isOwned
+            p Owned
+            form(action="/stock/"+id+"/unowned/"+idIngredients) 
+                button(type="submit") set unowned
+        else 
+            p Unowned
+            form(action="/stock/"+id+"/owned/"+idIngredients)
+                button(type="submit") set owned
