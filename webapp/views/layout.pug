@@ -9,9 +9,8 @@ html
         a(href="/" ID="index")
           img(src="/images/logo.png" alt="Logo") 
       ul.nav-links
-        if id
+        if conected
           // conected users
-          li: a(href="/home/"+id ID="home") home
           li: a(href="/cocktails/"+id ID="cocktails") cocktails
           li: a(href="/stock/"+id ID="stock") stock
         else

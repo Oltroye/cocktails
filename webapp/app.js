@@ -8,7 +8,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var signupRouter = require('./routes/signup');
 var loginRouter = require('./routes/log_in');
-var homeRouter = require('./routes/home');
 var cocktailsRouter = require('./routes/cocktails');
 var stockRouter = require('./routes/stock');
 
@@ -27,9 +26,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/signup', signupRouter);
+app.use('/sign_up', signupRouter);
 app.use('/log_in', loginRouter);
-app.use('/home', homeRouter);
 app.use('/cocktails', cocktailsRouter);
 app.use('/stock', stockRouter);
 
