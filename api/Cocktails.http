@@ -1,0 +1,6 @@
+@Cocktails_HostAddress = https://localhost:8080
+
+GET {{Cocktails_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
