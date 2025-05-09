@@ -74,7 +74,7 @@ namespace Cocktails.Controllers
             }
             
             if (!string.IsNullOrEmpty(updatedUserIngredients.IdIngredients)) userIngredients.IdIngredients = updatedUserIngredients.IdIngredients;
-            if (updatedUserIngredients.isOwned == null) userIngredients.isOwned = updatedUserIngredients.isOwned;
+            if (updatedUserIngredients.isOwned != null) userIngredients.isOwned = updatedUserIngredients.isOwned;
             await _collection.ReplaceOneAsync(u => u.IdUser == idUser && u.IdIngredients == idIngredients, userIngredients);
             return Ok(userIngredients);
         }
