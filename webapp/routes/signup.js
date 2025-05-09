@@ -39,6 +39,7 @@ router.post('/', async function(req,res, next) {
   });
   const response = await fetch(request);
   if (!response.ok) {
+    //email already used (fait gafe j'ai pas mis de redirection ca crash)
     const errorData = await response.json();
     return res.status(response.status).send(errorData.message || "Registration failed");
   }

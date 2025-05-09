@@ -25,8 +25,6 @@ router.get('/:id', async function(req, res, next) {
             var userIngridients = data;
             var ingrediants = [];
             for (const userIngredient of userIngridients) {
-                console.log(userIngredient)
-                console.log(userIngredient.idIngredients)
                 const getIngridients = new Request("http://"+ip+"/api/ingredients/"+userIngredient.idIngredients);
                 await fetch(getIngridients)
                 .then(response => {
@@ -37,7 +35,6 @@ router.get('/:id', async function(req, res, next) {
                     return response.json();
                 })
                 .then(data => {
-                    console.log(data)
                     ingrediants.push(data)
                 });
             };
@@ -56,13 +53,12 @@ router.get('/:id', async function(req, res, next) {
                     Types.push(data)
                 });
             };
-            console.log(userIngridients)
-            console.log(ingrediants)
-            console.log(Types)
             var listIngridients = [];
             for(index = 0; index < userIngridients.length; index++) {
+                listId = security.getInstance();
+                key = listId.add(userIngridients[index].idIngredients);
                 var ingrediant = {
-                    "idIngredients": userIngridients[index].idIngredients,
+                    "idIngredients": key,
                     "isOwned": userIngridients[index].isOwned,
                     "name": ingrediants[index].name,
                     "nameType": Types[index].name
@@ -75,6 +71,64 @@ router.get('/:id', async function(req, res, next) {
     } else {
         res.redirect('/');
     }
+});
+
+
+router.post('/:idUser/unowned/:idIngredient', async function(req,res, next) {
+    const userId = req.params.idUser;
+    const idIng = req.params.idIngredient;
+    listId = security.getInstance();
+
+    ipManager = await ipApiManager.getInstance();
+    ip = ipManager.get();
+
+    const userIngredient = {
+        "isOwned": false
+    };
+    const request = new Request("http://"+ip+"/api/userIngredients/"+listId.get(userId)+"/"+listId.get(idIng), {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userIngredient),
+    });
+    const response = await fetch(request);
+    if (!response.ok) {
+        // ingredient not found (la encore j'ai oublié la redirection)
+        const errorData = await response.json();
+        return res.status(response.status).send(errorData.message || "Registration failed");
+    }
+    
+    res.redirect('/stock/'+userId);
+});
+
+router.post('/:idUser/owned/:idIngredient', async function(req,res, next) {
+    const userId = req.params.idUser;
+    const idIng = req.params.idIngredient;
+    listId = security.getInstance();
+
+    ipManager = await ipApiManager.getInstance();
+    ip = ipManager.get();
+
+    const userIngredient = {
+        "isOwned": true
+    };
+
+    const request = new Request("http://"+ip+"/api/userIngredients/"+listId.get(userId)+"/"+listId.get(idIng), {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userIngredient),
+    });
+    const response = await fetch(request);
+    if (!response.ok) {
+        // ingredient not found (la encore j'ai oublié la redirection)
+        const errorData = await response.json();
+        return res.status(response.status).send(errorData.message || "Registration failed");
+    }
+    
+    res.redirect('/stock/'+userId);
 });
 
 module.exports = router;

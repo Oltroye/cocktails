@@ -6,9 +6,9 @@ block content
         p #{ingridient.nameType}
         if ingridient.isOwned
             p Owned
-            form(action="/stock/"+id+"/unowned/"+idIngredients) 
+            form(action="/stock/"+id+"/unowned/"+ingridient.idIngredients, method="POST") 
                 button(type="submit") set unowned
         else 
             p Unowned
-            form(action="/stock/"+id+"/owned/"+idIngredients)
+            form(action="/stock/"+id+"/owned/"+ingridient.idIngredients, method="POST")
                 button(type="submit") set owned

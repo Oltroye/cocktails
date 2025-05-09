@@ -61,7 +61,7 @@ namespace Cocktails.Controllers
             return CreatedAtAction(nameof(AddUserIngredients), new {id = userIngredients.IdUser }, userIngredients);
         }
 
-        [HttpPut("{idUser,idIngredients}")]
+        [HttpPut("{idUser}/{idIngredients}")]
         public async Task<IActionResult> ModifyUserIngredients(string idUser, string idIngredients, [FromBody] UserIngredients updatedUserIngredients)
         {
             if (!ObjectId.TryParse(idUser, out _) || !ObjectId.TryParse(idIngredients, out _)) {
