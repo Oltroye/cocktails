@@ -79,7 +79,7 @@ namespace Cocktails.Controllers
             return Ok(userIngredients);
         }
 
-        [HttpDelete("{idUser,idIngredients}")]
+        [HttpDelete("{idUser}/{idIngredients}")]
         public async Task<IActionResult> DeleteUserIngredients(string idUser, string idIngredients)
         {
             if (!ObjectId.TryParse(idUser, out _) || !ObjectId.TryParse(idIngredients, out _)) {

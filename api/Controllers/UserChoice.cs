@@ -85,6 +85,15 @@ namespace Cocktails.Controllers
                     await _collectionIngredientsUser.InsertOneAsync(replace);
                 }
             }
+
+            
+            try
+            {
+                await _collection.InsertOneAsync(userChoice);
+            } catch (MongoWriteException ex) when (ex.WriteError.Category == ServerErrorCategory.DuplicateKey)
+            {
+                return Conflict("choice already existing");
+            }
             return CreatedAtAction(nameof(AddUserChoice), new {id = userChoice.IdUser }, userChoice);
         }
 
@@ -105,7 +114,7 @@ namespace Cocktails.Controllers
             return Ok(userChoice);
         }
 
-        [HttpDelete("{idUser,idCocktail}")]
+        [HttpDelete("{idUser}/{idCocktail}")]
         public async Task<IActionResult> DeleteUserChoice(string idUser, string idCocktail)
         {
             if (!ObjectId.TryParse(idUser, out _) || !ObjectId.TryParse(idCocktail, out _)) {
