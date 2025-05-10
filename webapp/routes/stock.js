@@ -66,7 +66,7 @@ router.get('/:id', async function(req, res, next) {
                 listIngridients.push(ingrediant);
             }
 
-            res.render('stock', { title: "Cocktail's", id: userId, ingridients: listIngridients});
+            res.render('stock', { title: "Cocktail's", conected: true, id: userId, ingridients: listIngridients});
         });
     } else {
         res.redirect('/');
