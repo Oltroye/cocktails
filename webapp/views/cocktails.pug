@@ -4,7 +4,7 @@ block content
     for cocktail in cocktailList
         p #{cocktail.name}
         p #{cocktail.description}
-        //img(src=cocktail.picture, alt="")
+        img(src=cocktail.picture, alt="")
         if cocktail.alcoolFree
             p alcoolFree
         else

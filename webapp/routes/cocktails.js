@@ -52,10 +52,8 @@ router.get('/:id', async function(req, res, next) {
             .then( data => {
                 userChoice = data
             });
-            console.log(userChoice)
 
             for(index = 0; index < cocktails.length; index++) {
-                console.log(index)
                 listId = security.getInstance();
                 key = listId.add(cocktails[index].idCocktail);
 

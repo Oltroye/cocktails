@@ -131,4 +131,29 @@ router.post('/:idUser/owned/:idIngredient', async function(req,res, next) {
     res.redirect('/stock/'+userId);
 });
 
+router.post('/:idUser/del/:idIngredient', async function(req,res, next) {
+    const userId = req.params.idUser;
+    const idIng = req.params.idIngredient;
+    listId = security.getInstance();
+
+    ipManager = await ipApiManager.getInstance();
+    ip = ipManager.get();
+
+
+    const request = new Request("http://"+ip+"/api/userIngredients/"+listId.get(userId)+"/"+listId.get(idIng), {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    const response = await fetch(request);
+    if (!response.ok) {
+        // ingredient not found (la encore j'ai oublié la redirection)
+        const errorData = await response.json();
+        return res.status(response.status).send(errorData.message || "Registration failed");
+    }
+    
+    res.redirect('/stock/'+userId);
+});
+
 module.exports = router;

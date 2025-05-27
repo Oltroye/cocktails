@@ -45,10 +45,7 @@ router.post('/', async function(req,res, next) {
   }
 
   // Handle successful response
-  const data = await response.json();
-  newkey = security.getInstance();
-  key = newkey.add(data.idUser)
-  res.redirect('/cocktails/'+key)
+  res.redirect('/log_in')
 
 });
 

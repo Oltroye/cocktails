@@ -12,3 +12,5 @@ block content
             p Unowned
             form(action="/stock/"+id+"/owned/"+ingridient.idIngredients, method="POST")
                 button(type="submit") set owned
+        form(action="/stock/"+id+"/del/"+ingridient.idIngredients, method="POST") 
+                button(type="submit") remove from stock
