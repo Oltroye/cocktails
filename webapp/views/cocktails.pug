@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    for cocktail in cocktailList
+        p #{cocktail.name}
+        p #{cocktail.description}
+        //img(src=cocktail.picture, alt="")
+        if cocktail.alcoolFree
+            p alcoolFree
+        else
+            p alcool
+        p difficulty : #{cocktail.difficulty}
+        p popularity : #{cocktail.popularity}
+        if cocktail.makable
+            p can be make
+        else
+            p can't be make
+        p preparationTime : #{cocktail.preparationTime}
+        p glassType : #{cocktail.glassType}
+        p recipe : #{cocktail.recipe}
+        if cocktail.chose
+            p alredy in the card
+            form(action="/cocktails/"+id+"/remove/"+cocktail.idCocktail, method="POST") 
+                button(type="submit") remove from card
+        else 
+            form(action="/cocktails/"+id+"/add/"+cocktail.idCocktail, method="POST")
+                button(type="submit") add to card
