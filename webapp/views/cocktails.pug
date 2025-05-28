@@ -11,17 +11,17 @@ block content
         p #{cocktail.description}
 
         if cocktail.alcoolFree
-          p strong alcoolFree
+          p Sans alcool
         else
-          p strong alcool
+          p Avec alcool
 
-        p Difficulty: #{cocktail.difficulty}
-        p Popularity: #{cocktail.popularity}
+        p Difficulté: #{cocktail.difficulty}
+        p Popularité: #{cocktail.popularity}
 
         if cocktail.makable
-          p Can be made
+          p Vous pouvez le faire
         else
-          p Can't be made
+          p Vous ne pouvez pas le faire
 
         p Preparation Time: #{cocktail.preparationTime}
         p Glass Type: #{cocktail.glassType}
@@ -30,7 +30,7 @@ block content
         if cocktail.chose
           p Already in the card
           form(action="/cocktails/" + id + "/remove/" + cocktail.idCocktail, method="POST") 
-            button(type="submit") Remove from card
+            button(type="submit") Retirer
         else 
           form(action="/cocktails/" + id + "/add/" + cocktail.idCocktail, method="POST")
-            button(type="submit") Add to card
+            button(type="submit") Ajouter
