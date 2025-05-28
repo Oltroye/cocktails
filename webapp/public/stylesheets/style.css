@@ -1,14 +1,4 @@
-.form-container {
-  display: flex;
-  flex-direction: column; /* <- AJOUTÉ */
-  justify-content: center;
-  align-items: center;
-  padding-top: 40px;
-  min-height: 70vh;
-}
-
-
-
+/* Général */
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
@@ -19,11 +9,9 @@ body {
 a {
   text-decoration: none;
   color: #ffffff;
-  display: inline-block;
-  width: 100%;
-  height: 100%;
 }
 
+/* Header */
 header {
   display: flex;
   justify-content: space-between;
@@ -57,6 +45,7 @@ header {
   background-color: #6e98b0;
 }
 
+/* Accueil */
 .index-image {
   width: 100%;
   height: 600px;
@@ -74,70 +63,7 @@ header {
   text-align: center;
 }
 
-.card-header {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 10px;
-}
-
-.cocktail-image {
-  width: 60px;
-  height: 60px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #377ea7;
-}
-
-.cocktail-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 30px;
-}
-
-.cocktail-card {
-  background-color: #fffbed;
-  border: 1px solid #ddd;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.cocktail-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.cocktail-card h2 {
-  margin-top: 0;
-  color: #377ea7;
-}
-
-.cocktail-card p {
-  margin: 8px 0;
-  font-size: 14px;
-}
-
-.cocktail-card form {
-  margin-top: 10px;
-}
-
-.cocktail-card button {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 15px;
-  background-color: #377ea7;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.cocktail-card button:hover {
-  background-color: #6e98b0;
-}
-
+/* Formulaires */
 form {
   background-color: #fffbed;
   max-width: 400px;
@@ -200,14 +126,18 @@ button[type="submit"]:hover {
   background-color: #6e98b0;
 }
 
+/* Containers */
 .form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 40px;
   min-height: 70vh;
 }
 
+/* Grilles */
+.cocktail-grid,
 .ingredient-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -215,6 +145,8 @@ button[type="submit"]:hover {
   padding: 30px;
 }
 
+/* Cartes */
+.cocktail-card,
 .ingredient-card {
   background-color: #fffbed;
   border: 1px solid #ddd;
@@ -222,33 +154,61 @@ button[type="submit"]:hover {
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.3s ease;
+  text-align: center;
 }
 
+.cocktail-card:hover,
 .ingredient-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.cocktail-card h2,
+.ingredient-card h2 {
+  margin-top: 0;
+  color: #377ea7;
+}
+
+.cocktail-card p,
 .ingredient-card p {
   margin: 8px 0;
-  font-size: 16px;
+  font-size: 14px;
   color: #333;
 }
 
-.ingredient-card form {
-  margin-top: 10px;
+/* Image de cocktail */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 
-.ingredient-card button {
-  padding: 8px 15px;
-  border: none;
-  border-radius: 15px;
+.cocktail-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #377ea7;
+}
+
+/* Bouton stylisé utilisé pour les ajouts / suppressions */
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
   background-color: #377ea7;
   color: white;
   font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  margin: 10px auto 0;
+  width: fit-content;
 }
 
-.ingredient-card button:hover {
+.button-link:hover {
   background-color: #6e98b0;
 }
