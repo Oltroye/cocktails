@@ -88,7 +88,7 @@ namespace Cocktails.Controllers
             return CreatedAtAction(nameof(AddUserChoice), new {id = userChoice.IdUser }, userChoice);
         }
 
-        [HttpPut("{idUser,idCocktail}")]
+        [HttpPut("{idUser}/{idCocktail}")]
         public async Task<IActionResult> ModifyUserChoice(string idUser, string idCocktail, [FromBody] UserChoice updatedUserChoice)
         {
             if (!ObjectId.TryParse(idUser, out _) || !ObjectId.TryParse(idCocktail, out _)) {
