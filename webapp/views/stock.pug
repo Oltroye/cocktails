@@ -15,3 +15,6 @@ block content
           p Actuellement : Non possédé
           form(action=`/stock/${id}/owned/${ingridient.idIngredients}`, method="POST")
             button.button-link(type="submit") Ajouter au stock
+            
+        form(action="/stock/"+id+"/del/"+ingridient.idIngredients, method="POST") 
+          button(type="submit") Suprimer
