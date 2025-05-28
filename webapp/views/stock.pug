@@ -1,16 +1,14 @@
 extends layout
 
 block content
-  .ingredient-list
     for ingridient in ingridients
-      .ingredient-card
-        p Nom: #{ingridient.name}
-        p Type: #{ingridient.nameType}
+        p #{ingridient.name}
+        p #{ingridient.nameType}
         if ingridient.isOwned
-          p Statut: Owned
-          form(action="/stock/"+id+"/unowned/"+ingridient.idIngredients, method="POST") 
-            button(type="submit") Non Posséder
+            p Owned
+            form(action="/stock/"+id+"/unowned/"+ingridient.idIngredients, method="POST") 
+                button(type="submit") set unowned
         else 
-          p Statut: Unowned
-          form(action="/stock/"+id+"/owned/"+ingridient.idIngredients, method="POST")
-            button(type="submit") Posséder
+            p Unowned
+            form(action="/stock/"+id+"/owned/"+ingridient.idIngredients, method="POST")
+                button(type="submit") set owned

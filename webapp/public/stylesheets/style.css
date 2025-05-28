@@ -1,3 +1,14 @@
+.form-container {
+  display: flex;
+  flex-direction: column; /* <- AJOUTÉ */
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  min-height: 70vh;
+}
+
+
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
