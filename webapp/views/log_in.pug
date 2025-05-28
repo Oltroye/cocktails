@@ -1,14 +1,14 @@
 extends layout
 
 block content
-  header.box
-    .box-content
-        h2 Login
-        form(action="/log_in" method="POST")
-            .form-group
-                label(for="email") Email:
-                input#username(type="email" name="email" required)
-            .form-group
-                label(for="password") Password:
-                input#password(type="password" name="password" required)
-            button(type="submit") Login
+  .form-container
+    h1 Connexion
+    form(action="/log_in", method="POST")
+      .form-group
+        label(for="email") Email:
+        input(type="email", name="email", required)
+      .form-group
+        label(for="password") Mot de passe:
+        input(type="password", name="password", required)
+      button(type="submit") Connexion
+    

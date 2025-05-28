@@ -4,18 +4,14 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    nav.navbar
-      div.logo 
-        a(href="/" ID="index")
-          img(src="/images/logo.png" alt="Logo") 
-      ul.nav-links
+    header
+      a(href="/")
+        img.logo(src="/stylesheets/logo.png", alt="Logo")
+      .buttons
         if conected
-          // conected users
-          li: a(href="/cocktails/"+id ID="cocktails") cocktails
-          li: a(href="/stock/"+id ID="stock") stock
+          button: a(href="/cocktails/" + id) Cocktails
+          button: a(href="/stock/" + id) Stock
         else
-          // none conected users
-          li: a(href="/sign_up" ID="sign_up") sign up
-          li: a(href="/log_in" ID="log_in") log in
-
+          button: a(href="/sign_up") Inscription
+          button: a(href="/log_in") Connexion
     block content

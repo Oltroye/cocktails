@@ -1,18 +1,19 @@
 extends layout
 
 block content
-    h1 Sign Up
+  .page-form
+    h1 Inscription
     form(action="/sign_up", method="POST")
-        label(for="username") Username
-        input(type="username", name="username", id="username" required)
-        label(for="email") Email
-        input(type="email", name="email", id="email")
-        label(for="name", name="name", id="name") Name
-        input(type="name", name="name", id="name")
-        label(for="firstname", name="firstname", id="firstname" required) Firstname
-        input(type="firstname", name="firstname", id="firstname" required)
-        label(for="password") Password
-        input(type="password", name="password", id="password" required)
-        label(for="passwordbis") Retipe Password
-        input(type="password", name="passwordbis", id="passwordbis" required)
-        button(type="submit") Sign Up 
+      label(for="username") Pseudo
+      input(type="username", name="username", id="username" required)
+      label(for="email") Email
+      input(type="email", name="email", id="email")
+      label(for="name") Nom
+      input(type="name", name="name", id="name")
+      label(for="firstname") Prénom
+      input(type="firstname", name="firstname", id="firstname" required)
+      label(for="password") Mot de passe
+      input(type="password", name="password", id="password" required)
+      label(for="passwordbis") Confirmer le mot de passe
+      input(type="password", name="passwordbis", id="passwordbis" required)
+      button(type="submit") Inscription
