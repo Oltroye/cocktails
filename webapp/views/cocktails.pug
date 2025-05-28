@@ -1,27 +1,36 @@
 extends layout
 
 block content
-    for cocktail in cocktailList
-        p #{cocktail.name}
+  .cocktail-grid
+    each cocktail in cocktailList
+      .cocktail-card
+        .card-header
+          img.cocktail-image(src=cocktail.picture, alt=cocktail.name)
+          h2 #{cocktail.name}
+
         p #{cocktail.description}
-        //img(src=cocktail.picture, alt="")
+
         if cocktail.alcoolFree
-            p alcoolFree
+          p strong alcoolFree
         else
-            p alcool
-        p difficulty : #{cocktail.difficulty}
-        p popularity : #{cocktail.popularity}
+          p strong alcool
+
+        p Difficulty: #{cocktail.difficulty}
+        p Popularity: #{cocktail.popularity}
+
         if cocktail.makable
-            p can be make
+          p Can be made
         else
-            p can't be make
-        p preparationTime : #{cocktail.preparationTime}
-        p glassType : #{cocktail.glassType}
-        p recipe : #{cocktail.recipe}
+          p Can't be made
+
+        p Preparation Time: #{cocktail.preparationTime}
+        p Glass Type: #{cocktail.glassType}
+        p Recipe: #{cocktail.recipe}
+
         if cocktail.chose
-            p alredy in the card
-            form(action="/cocktails/"+id+"/remove/"+cocktail.idCocktail, method="POST") 
-                button(type="submit") remove from card
+          p Already in the card
+          form(action="/cocktails/" + id + "/remove/" + cocktail.idCocktail, method="POST") 
+            button(type="submit") Remove from card
         else 
-            form(action="/cocktails/"+id+"/add/"+cocktail.idCocktail, method="POST")
-                button(type="submit") add to card
+          form(action="/cocktails/" + id + "/add/" + cocktail.idCocktail, method="POST")
+            button(type="submit") Add to card
